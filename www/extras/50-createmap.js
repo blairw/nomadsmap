@@ -48,7 +48,7 @@ function drawMap(withAnimations) {
         CartoDB_Positron.addTo(globalMap);
     }
     
-    $.getJSON(API_ROOT + "getTrips.json?revision=7", function(data){
+    $.getJSON(API_ROOT + "getTrips.json?revision=8", function(data){
         for (var i = 0; i < data.length; i++) {
             var thisLoc = data[i];
             var curvedPathLatLongs = calculateCurvedEarthControlPoint(
