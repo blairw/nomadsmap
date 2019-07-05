@@ -48,7 +48,7 @@ function drawMap(withAnimations) {
         CartoDB_Positron.addTo(globalMap);
     }
     
-    $.getJSON(API_ROOT + "getTrips.json?revision=8", function(data){
+    $.getJSON(API_ROOT + "getTrips.json?revision=9", function(data){
         for (var i = 0; i < data.length; i++) {
             var thisLoc = data[i];
             var curvedPathLatLongs = calculateCurvedEarthControlPoint(
@@ -88,7 +88,7 @@ function drawMap(withAnimations) {
                 ], pathOptions
             ).addTo(globalMap);
 
-            curvedPath.bindPopup(thisLoc.counter + " movements<br><small>Moving between <b>" + thisLoc.x_city + "</b> and <b>" + thisLoc.y_city + "</b></small>");
+            curvedPath.bindPopup(thisLoc.counter + " trips<br><small>Moving between <b>" + thisLoc.x_city + "</b> and <b>" + thisLoc.y_city + "</b></small>");
         }
     });
 
