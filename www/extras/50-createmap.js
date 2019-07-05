@@ -54,7 +54,7 @@ function drawMap(withAnimations) {
             var pathOptions = {
                 color: (thisLoc.counter < 20 ? "rgb(20,120,230)" : "rgb(255,0,100)"),
                 weight: (thisLoc.counter < 20 ? 1 : 3),
-                opacity: (thisLoc.counter < 20 ? 0.5 : 1)
+                opacity: (thisLoc.counter < 20 ? 0.5 : 0.75)
             };
 
             // source: https://medium.com/@ryancatalani/creating-consistently-curved-lines-on-leaflet-b59bc03fa9dc
