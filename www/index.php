@@ -10,9 +10,9 @@
 	<script src="node_modules/leaflet/dist/leaflet.js"></script>
 	<script src="node_modules/@elfalem/leaflet-curve/dist/leaflet.curve.js"></script>
 	
-	<script src="extras/10-apiroot.js?revision=5"></script>
-	<script src="extras/30-curvature.js?revision=5"></script>
-	<script src="extras/50-createmap.js?revision=5"></script>
+	<script src="extras/10-apiroot.js?revision=6"></script>
+	<script src="extras/30-curvature.js?revision=6"></script>
+	<script src="extras/50-createmap.js?revision=6"></script>
 	<style>
 		body {
 			margin: 0;
@@ -24,7 +24,7 @@
 			top: 1rem;
 			right: 1rem;
 			z-index: 99;
-			background-color: rgba(0,0,0,0.35);
+			background-color: rgba(0,0,0,0.25);
 			border-radius: 1rem;
 			padding: 1rem;
 			color: white;
@@ -54,6 +54,8 @@
 		<p>
 			Data sourced from <a href="https://nomadlist.com/">Nomad List</a> as self-reported by users, 1999-2019.
 			<br />Only showing movements (in either direction) with 5 or more entries.
+			<br />Showing <span style="font-weight: bold; color: rgb(255,0,100);">major</span> trips (20+ entries)
+			and <span style="font-weight: bold; color: rgb(20,120,230);">minor</span> trips (5+ entries).
 		</p>
 		<p>
 			<strong>Produced by the Digital Work Research Group</strong>
