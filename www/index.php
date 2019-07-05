@@ -60,8 +60,8 @@
 		<p>
 			<strong>Produced by the Digital Work Research Group</strong>
 			<br />Concept: <a href="https://business.sydney.edu.au/staff/schlagwein">Prof. Daniel Schlagwein</a>
-			<br />Software Codebase (see <a href="https://github.com/blairw/nomadsmap">GitHub repo</a>): <a href="https://blair.wang/">Blair Wang</a>
-			<br />Data Engineer: <a href="https://www.business.unsw.edu.au/our-people/julian-prester">Julian Prester</a>
+			<br />Software Development (see <a href="https://github.com/blairw/nomadsmap">GitHub repo</a>): <a href="https://blair.wang/">Blair Wang</a>
+			<br />Data Engineering: <a href="https://www.business.unsw.edu.au/our-people/julian-prester">Julian Prester</a>
 		</p>
 		<button onclick="redrawMapToggleAnimation()">toggle animations</button>
 		<button onclick="redrawMapToggleDarkMode()">toggle dark mode</button>
