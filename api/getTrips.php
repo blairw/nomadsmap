@@ -22,19 +22,36 @@
 	
 	$outputArray = array();
 	while ($row = $resRows->fetch_assoc()) {
+
+		// check if already exists similar latlong
+		$is_found_similar = false;
+		for ($i = 0; $i < count($outputArray); $i++) {
+			if (
+				$outputArray[$i]["x_city"] == $row["x_city"]
+				&& $outputArray[$i]["y_city"] == $row["y_city"]
+				&& abs(floatval($outputArray[$i]["x_lat"]) - floatval($row["x_lat"])) < 1
+				&& abs(floatval($outputArray[$i]["x_long"]) - floatval($row["x_long"])) < 1
+				&& abs(floatval($outputArray[$i]["y_lat"]) - floatval($row["y_lat"])) < 1
+				&& abs(floatval($outputArray[$i]["y_long"]) - floatval($row["y_long"])) < 1
+			) {
+				$outputArray[$i]["counter"] = $outputArray[$i]["counter"] + $row["counter"];
+				$is_found_similar = true;
+			}
+		}
+
+		$is_found_reversed = false;
 		// check if already exists reversed
-		$is_found = false;
 		for ($i = 0; $i < count($outputArray); $i++) {
 			if (
 				$outputArray[$i]["x_city"] == $row["y_city"]
-				&& $outputArray[$i]["x_lat"] == $row["y_lat"]
-				&& $outputArray[$i]["x_long"] == $row["y_long"]
 				&& $outputArray[$i]["y_city"] == $row["x_city"]
-				&& $outputArray[$i]["y_lat"] == $row["x_lat"]
-				&& $outputArray[$i]["y_long"] == $row["x_long"]
+				&& abs(floatval($outputArray[$i]["x_lat"]) - floatval($row["y_lat"])) < 1
+				&& abs(floatval($outputArray[$i]["x_long"]) - floatval($row["y_long"])) < 1
+				&& abs(floatval($outputArray[$i]["y_lat"]) - floatval($row["x_lat"])) < 1
+				&& abs(floatval($outputArray[$i]["y_long"]) - floatval($row["x_long"])) < 1
 			) {
 				$outputArray[$i]["counter"] = $outputArray[$i]["counter"] + $row["counter"];
-				$is_found = true;
+				$is_found_reversed = true;
 			}
 		}
 
@@ -42,13 +59,13 @@
 		$is_invalid = false;
 		if (
 			$row["x_city"] == $row["y_city"]
-			&& $row["x_lat"] == $row["y_lat"]
-			&& $row["x_long"] == $row["y_long"]
+			&& abs(floatval($row["x_lat"]) - floatval($row["y_lat"])) < 1
+			&& abs(floatval($row["x_long"]) - floatval($row["y_long"])) < 1
 		) {
 			$is_invalid = true;
 		}
 
-		if (!$is_found && !$is_invalid) {
+		if (!$is_found_similar && !$is_found_reversed && !$is_invalid) {
 			array_push($outputArray, $row);
 		}
 	}
