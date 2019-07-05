@@ -43,7 +43,7 @@ function drawMap(withAnimations) {
     }
     
 
-    $.getJSON("../api/getTrips.json", function(data){
+    $.getJSON(API_ROOT + "getTrips.json", function(data){
         for (var i = 0; i < data.length; i++) {
             var thisLoc = data[i];
             var curvedPathLatLongs = calculateCurvedEarthControlPoint(

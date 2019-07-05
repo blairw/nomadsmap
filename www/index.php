@@ -10,6 +10,7 @@
 	<script src="node_modules/leaflet/dist/leaflet.js"></script>
 	<script src="node_modules/@elfalem/leaflet-curve/dist/leaflet.curve.js"></script>
 	
+	<script src="extras/10-apiroot.js"></script>
 	<script src="extras/30-curvature.js"></script>
 	<script src="extras/50-createmap.js"></script>
 	<style>
