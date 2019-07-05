@@ -1,0 +1,11 @@
+{
+  "name": "nomadsmap",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "@elfalem/leaflet-curve": "^0.5.2",
+    "jquery": "^3.4.1",
+    "leaflet": "1.1.0"
+  }
+}
