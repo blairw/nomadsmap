@@ -2,6 +2,21 @@ var globalMap;
 var globalAnimationToggle = true;
 var globalDarkModeToggle = false;
 
+var attributionPrefix = '<a href="https://medium.com/@ryancatalani/creating-consistently-curved-lines-on-leaflet-b59bc03fa9dc">Animated Curves</a>';
+attributionPrefix += ' | <a href="https://p.yusukekamiyamane.com/">Fugue</a>'
+attributionPrefix += " | ";
+
+var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: attributionPrefix + '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+});
+var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: attributionPrefix + '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 19
+});
+
 function bodyDidLoad() {
     drawMap(globalAnimationToggle);
 }
@@ -13,28 +28,19 @@ function redrawMapToggleAnimation() {
 }
 
 function redrawMapToggleDarkMode() {
-    globalMap.remove();
     globalDarkModeToggle = !globalDarkModeToggle;
-    drawMap(globalAnimationToggle);
+
+    if (globalDarkModeToggle) {
+        CartoDB_Positron.removeFrom(globalMap);
+        CartoDB_DarkMatter.addTo(globalMap);
+    } else {
+        CartoDB_DarkMatter.removeFrom(globalMap);
+        CartoDB_Positron.addTo(globalMap);
+    }
 }
 
 function drawMap(withAnimations) {
     globalMap = L.map('mapid', {zoomSnap: 0.25}).fitBounds([[65,-130],[-40,179]]);
-
-    var attributionPrefix = '<a href="https://medium.com/@ryancatalani/creating-consistently-curved-lines-on-leaflet-b59bc03fa9dc">Animated Curves</a>';
-    attributionPrefix += ' | <a href="https://p.yusukekamiyamane.com/">Fugue</a>'
-    attributionPrefix += " | ";
-
-    var CartoDB_Positron = L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-        attribution: attributionPrefix + '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-    });
-    var CartoDB_DarkMatter = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-        attribution: attributionPrefix + '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-        subdomains: 'abcd',
-        maxZoom: 19
-    });
 
     if (globalDarkModeToggle) {
         CartoDB_DarkMatter.addTo(globalMap);
@@ -42,7 +48,6 @@ function drawMap(withAnimations) {
         CartoDB_Positron.addTo(globalMap);
     }
     
-
     $.getJSON(API_ROOT + "getTrips.json", function(data){
         for (var i = 0; i < data.length; i++) {
             var thisLoc = data[i];
