@@ -83,7 +83,7 @@ function drawMap(withAnimations) {
                 ], pathOptions
             ).addTo(globalMap);
 
-            curvedPath.bindPopup(thisLoc.counter + " flights<br><small><b>" + thisLoc.x_city + "</b> flying to <b>" + thisLoc.y_city + "</b></small>");
+            curvedPath.bindPopup(thisLoc.counter + " movements<br><small>Moving between <b>" + thisLoc.x_city + "</b> and <b>" + thisLoc.y_city + "</b></small>");
         }
     });
 
