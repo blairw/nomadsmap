@@ -10,9 +10,9 @@
 	<script src="node_modules/leaflet/dist/leaflet.js"></script>
 	<script src="node_modules/@elfalem/leaflet-curve/dist/leaflet.curve.js"></script>
 	
-	<script src="extras/10-apiroot.js?revision=9"></script>
-	<script src="extras/30-curvature.js?revision=9"></script>
-	<script src="extras/50-createmap.js?revision=9"></script>
+	<script src="extras/10-apiroot.js?revision=10"></script>
+	<script src="extras/30-curvature.js?revision=10"></script>
+	<script src="extras/50-createmap.js?revision=10"></script>
 	<style>
 		body {
 			margin: 0;

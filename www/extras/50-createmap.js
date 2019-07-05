@@ -48,8 +48,10 @@ function drawMap(withAnimations) {
         CartoDB_Positron.addTo(globalMap);
     }
     
-    $.getJSON(API_ROOT + "getTrips.json?revision=9", function(data){
+    $.getJSON(API_ROOT + "getTrips.json?revision=10", function(data){
         for (var i = 0; i < data.length; i++) {
+            var myRandomNumber = Math.random();
+            
             var thisLoc = data[i];
             var curvedPathLatLongs = calculateCurvedEarthControlPoint(
                 [parseFloat(thisLoc.x_lat), parseFloat(thisLoc.x_long)], 
@@ -76,7 +78,7 @@ function drawMap(withAnimations) {
                     iterations: Infinity,
                     easing: 'ease-in-out',
                     direction: 'alternate',
-                    delay: Math.random() * 10 * durationBase
+                    delay: duration * myRandomNumber
                 }
             }
 
